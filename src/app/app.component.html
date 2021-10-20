@@ -1,0 +1,69 @@
+<p-toast></p-toast>
+<div class="card">
+    <p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="upload($event)" accept=".txt">
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+    </p-fileUpload>
+</div>
+
+<div class="content-section implementation">
+    <div class="card" *ngIf="registros.length > 0">
+        <h2>Registros</h2>
+        <p-table [value]="registros" sortField="loja" sortMode="single" [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="loja" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="min-width:200px">Dono</th>
+                    <th style="min-width:200px">CPF</th>
+                    <th style="min-width:200px">Cartão</th>
+                    <th style="min-width:200px">Valor</th>
+                    <th style="min-width:200px">Data</th>
+                    <th style="min-width:200px">Hora</th>
+                    <th style="min-width:200px">Tipo de Transação</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="groupheader" let-cnab>
+                <tr pRowGroupHeader>
+                    <td colspan="5">                  
+                        <span class="p-text-bold p-ml-2" style="font-weight: bold;">{{cnab.loja}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="groupfooter" let-cnab>
+                <tr class="p-rowgroup-footer">
+                    <td style="min-width: 80%">
+                        <div style="text-align: right; width: 100%">Total Vendas</div>
+                    </td>
+                    <td style="width: 20%">{{calularTotalVendas(cnab.loja) | currency}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cnab let-rowIndex="rowIndex">
+                <tr>
+                    <td style="min-width:200px">
+                        {{cnab.dono}}
+                    </td>
+                    <td style="min-width:200px">
+                        {{cnab.cpf | cpf}}
+                    </td>
+                    <td style="min-width:200px">
+                        {{cnab.cartao}}
+                    </td>
+                    <td style="min-width:200px">
+                        {{cnab.valor | currency}}
+                    </td>
+                    <td style="min-width:200px">
+                        {{cnab.data}}
+                    </td>
+                    <td style="min-width:200px">
+                        {{cnab.hora}}
+                    </td>
+                    <td style="min-width:200px">
+                        <span [class]="'customer-badge tipo-' + cnab.tipoTransacao.codigo">{{cnab.tipoTransacao.descricao}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
