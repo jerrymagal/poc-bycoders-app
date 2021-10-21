@@ -1,27 +1,23 @@
-# BycodersApp
+# Projeto referente ao desafio bycoders
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+Esse projeto tem como objetivo atender aos requisitos informados no desafio para leitura e extração de um arquivo CNAB.
+Esse repositório representa o front-end do projeto. As tecnologias usadas foram Angular, Node, primeng e nginx
 
-## Development server
+# Estrutura do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+O projeto foi pensado para consumer as apis do banck-end e fornecer uma interface ao usuário. Foi criada uma tela com campo para seleção de arquivos txt no padrão CNAB e após o
+processamento é exibida uma tabela no formado solicitado.
 
-## Code scaffolding
+# Como rodar o projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O primeiro passo é clonar o repositório da branch master: git clone -b master https://github.com/jerrymagal/poc-bycoders-app.git
 
-## Build
+Para execução do projeto foi utilizado o docker para subir a aplicação rodando em um servidor nginx, para tal foram criados os arquivos Dockefile e docker-compose.yml.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Acessar a raiz do projeto e executar o comando: docker-compose up --build -d
 
-## Running unit tests
+Esse comando vai criar as imagens e subir ambos containers.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Testar a aplicação
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para testar a aplicação utilizar o endereço http://localhost:4242
