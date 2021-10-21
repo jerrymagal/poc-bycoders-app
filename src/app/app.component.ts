@@ -11,7 +11,7 @@ import { Cnab } from './domain/cnab';
 })
 export class AppComponent implements OnInit {
 
-  private host = 'http://localhost:8080/bycoders-api/v1';
+  private host = 'http://localhost:6868/bycoders-api/v1';
   title = 'bycoders-app';
 
   uploadedFiles: any[] = [];
